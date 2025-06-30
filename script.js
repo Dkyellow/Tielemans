@@ -1,5 +1,6 @@
 let menubtn = document.querySelector(".menu-btn");
 let exitbtn = document.querySelector(".exit");
+
 let mobilenavbar = document.querySelector(".mobile-nav-bar");
 menubtn.addEventListener("click", () => {
   mobilenavbar.style.display = "block";
@@ -19,11 +20,12 @@ let services = document.querySelector(".service-container");
 
 dropdown.addEventListener("click", () => {
   services.style.height = "fit-content";
+
   dropdown.style.display = "none";
   setTimeout(function () {
-    services.style.height = "345px";
+    services.style.height = "365px";
     dropdown.style.display = "block";
-  }, 10000);
+  }, 12000);
 });
 
 // Code for the animation
@@ -135,5 +137,62 @@ function SendEmail() {
   emailjs
     .send("service_dbvdfls", "template_eihyueo", parms)
     .then(alert("Email sent"));
-    
+  alert("emailsent");
 }
+
+// let btnsubmit = document.querySelector(".btnsubmit");
+// btnsubmit.addEventListener("click", () => {
+//   SendEmail();
+// });
+
+let servicex = document.querySelectorAll(".service-item");
+
+servicex.forEach((servicebtn) => {
+  servicebtn.addEventListener("click", () => {
+    if (servicebtn.textContent.includes("Company Registration")) {
+      document.querySelector(".Company").classList.remove("Non-Active");
+      document.querySelector(".Campany").classList.add("Active");
+    } else if (servicebtn.textContent.includes("Tax Clearance")) {
+      document.querySelector(".Tax").classList.remove("Non-Active");
+      document.querySelector(".Tax").classList.add("Active");
+    } else if (servicebtn.textContent.includes("PRAZ")) {
+      document.querySelector(".PRAZ").classList.remove("Non-Active");
+      document.querySelector(".PRAZ").classList.add("Active");
+    } else if (servicebtn.textContent.includes("Vendor")) {
+      document.querySelector(".Vendor").classList.remove("Non-Active");
+      document.querySelector(".Vendor").classList.add("Active");
+    } else if (servicebtn.textContent.includes("Bank")) {
+      document.querySelector(".Bank").classList.remove("Non-Active");
+      document.querySelector(".Bank").classList.add("Active");
+    } else if (servicebtn.textContent.includes("VAT &")) {
+      document.querySelector(".VAT").classList.remove("Non-Active");
+      document.querySelector(".VAT").classList.add("Active");
+    } else if (servicebtn.textContent.includes("NSSA")) {
+      document.querySelector(".NSSA").classList.remove("Non-Active");
+      document.querySelector(".NSSA").classList.add("Active");
+    }
+
+    setTimeout(function () {
+      document.querySelector(".Tax").classList.add("Non-Active");
+      document.querySelector(".Tax").classList.remove("Active");
+      document.querySelector(".PRAZ").classList.add("Non-Active");
+      document.querySelector(".PRAZ").classList.remove("Active");
+      document.querySelector(".Vendor").classList.add("Non-Active");
+      document.querySelector(".Vendor").classList.remove("Active");
+      document.querySelector(".Bank").classList.add("Non-Active");
+      document.querySelector(".Bank").classList.remove("Active");
+      document.querySelector(".VAT").classList.add("Non-Active");
+      document.querySelector(".VAT").classList.remove("Active");
+      document.querySelector(".NSSA").classList.add("Non-Active");
+      document.querySelector(".NSSA").classList.remove("Active");
+    }, 4000);
+  });
+});
+
+let close = document.querySelectorAll(".close");
+close.forEach((closex) => {
+  closex.addEventListener("click", () => {
+    document.querySelector(".req-services").classList.add("Non-Active");
+    document.querySelector(".req-services").classList.remove("Active");
+  });
+});
