@@ -523,7 +523,6 @@ body {
   top: 96%;
   background-color: var(--themecolor);
   width: 100%;
-  z-index: 10;
 }
 
 .service-item:hover {
@@ -539,6 +538,14 @@ body {
   font-size: 20px;
   font-weight: 400;
 }
+.close {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  font-size: 25px;
+  color: white;
+  font-weight: 700;
+}
 .Active {
   display: block;
   z-index: 20;
@@ -546,6 +553,7 @@ body {
 .Non-Active {
   display: none;
   opacity: 0;
+  z-index: -1;
 }
 .req-services {
   position: absolute;
@@ -557,6 +565,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 1.2s;
 }
 .req {
   border-radius: 10px;
