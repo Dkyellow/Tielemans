@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Tielemans</title>
+    <meta name="description"
+        content="Explore our business consultancy services: Company Registration, Tax Consultancy, PRAZ Registration, Business Advisory, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .service-detail-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: var(--glass-border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-detail-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .req-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin: 1rem 0 2rem 0;
+            color: var(--text-light);
+        }
+
+        .service-action {
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-contact">
+                <span><i class="fas fa-map-marker-alt"></i> Chiyedza House
+Kwame Nkrumah
+1st Floor Office 24
+Harare, Zimbabwe</span>
+                <span><i class="fas fa-phone"></i> +263 777 754 471 | +263  717 178 442</span>
+                <span><i class="fas fa-envelope"></i> info@tielemans.co.zw</span>
+            </div>
+            <div class="top-socials">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <!-- Nav bar -->
+
+    <nav class="navbar">
+        <div class="container nav-container">
+           <a href="#" class="logo"><img src="images\logo.png" alt="" class="logo_pic"><span style="color:var(--primary)">Tielemans.</span></a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="services.html" class="nav-link selected">Services</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <a href="contact.html" class="btn btn-primary get-started-btn">Get Started</a>
+                <div class="hamburger"><i class="fas fa-bars"></i></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="section">
+        <div class="container" style="padding-top: 4rem;">
+            <div class="section-header fade-in">
+                <h1 class="section-title">Our Comprehensive Services</h1>
+                <p class="section-desc">From company registration to tax consultancy, we have you covered.</p>
+            </div>
+
+            <div class="services-grid fade-in">
+
+                <!-- Service 1 -->
+                <div class="service-detail-card" id="registration">
+                    <h3>Company Registration</h3>
+                    <p>We facilitate the complete registration of Private Limited Companies and Private Business
+                        Corporations efficiently.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                        <li>At least 3 Company names</li>
+          <li>Company Objectives / nature of Business</li>
+          <li>At least 2 Directors full names for Private Limited</li>
+          <li>Directors IDs</li>
+          <li>Directors Physical address</li>
+          <li>Company address or use one of the directors address</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-primary">Register Now</a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-detail-card">
+                    <h3>VAT Registration</h3>
+                    <p>We procure the necessary documents issued by ZMIRA for new entities required when opening a
+                        corporate bank account.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                        <li>Stamped Bank Statements</li>
+          <li>Lease Agreement</li>
+          <li>At least 4 invoices</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-detail-card">
+                    <h3>Corporate Bank Account</h3>
+                    <p>Assistance in opening corporate bank accounts with leading banks in Zimbabwe.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                       <li>Company Documents</li>
+          <li>Directors IDs</li>
+          <li>Valid Tax Clearance Certificates</li>
+          <li>Proof of Residence</li>
+          <li>All copies must be certified</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-detail-card">
+                    <h3>Tax Clearance / Tax Clearance Renewal</h3>
+                    <p>Application for tax clearance certificates (ITF 263) for both new and existing companies.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                        <li>Company Registration Documents</li>
+          <li>Scanned Directors IDs</li>
+          <li>Company/Individual Bank Account</li>
+          <li>Directors email</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Get Cleared</a>
+                    </div>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-detail-card">
+                    <h3>PRAZ Registration</h3>
+                    <p>Registration with the Procurement Regulatory Authority of Zimbabwe for government tenders.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                         <li>CR5</li>
+          <li>CR6</li>
+          <li>Certificates of incorporation</li>
+          <li>Memorandum and Articles of Association</li>
+          <li>Company Profile</li>
+          <li>Registration fee</li>
+          <li>Directors IDs</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Register with PRAZ</a>
+                    </div>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-detail-card">
+                    <h3>Vendor Number Allocation</h3>
+                    <p>Application for vendor numbers to enable trading with large corporates and government.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                        <li>Certificates of incorporation</li>
+          <li>CR14</li>
+          <li>Valid Tax Clearance</li>
+          <li>Company Bank Statements</li>
+          <li>ID copies of all Directors</li>
+          <li>Proof of residence of at least 2 Directors</li>
+          <li>All copies must be certified</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Service 7 -->
+                <div class="service-detail-card">
+                    <h3>Tax Consultancy</h3>
+                    <p>Expert advice on how to legally minimize tax liabilities and manage returns.</p>
+                    <h4>Includes:</h4>
+                    <ul class="req-list">
+                        <li>VAT Registration</li>
+                        <li>QPDs Filing</li>
+                        <li>Tax Planning</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Consult Expert</a>
+                    </div>
+                </div>
+
+                <!-- Service 8 -->
+                <div class="service-detail-card">
+                    <h3>NSSA Registration</h3>
+                    <p>Professional advice to maximize revenue and minimize costs sustainably.</p>
+                    <h4>Focus Areas:</h4>
+                    <ul class="req-list">
+                        <li>Certificates of incorporation</li>
+          <li>CR5</li>
+          <li>CR6</li>
+          <li>Company contact details</li>
+          <li>Director's ID</li>
+          <li>Bank details and Employee details</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Get Advice</a>
+                    </div>
+                </div>
+
+                <!-- Service 9 -->
+                <div class="service-detail-card">
+                    <h3>Bookkeeping</h3>
+                    <p>Preparation of financial statements and daily bookkeeping services.</p>
+                    <h4>Includes:</h4>
+                    <ul class="req-list">
+                        <li>Income Statements</li>
+                        <li>Balance Sheets</li>
+                        <li>Cash Flow Statements</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Enquire</a>
+                    </div>
+                </div>
+
+                <!-- Service 10 -->
+                <div class="service-detail-card">
+                    <h3>Trust & Church Registration</h3>
+                    <p>Legal registration of Trusts, Foundations, and Churches in Zimbabwe.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                        <li>Trust Deed info</li>
+                        <li>Trustees details</li>
+                        <li>Constitution (for churches)</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Register</a>
+                    </div>
+                </div>
+
+                <!-- Service 11 -->
+                <div class="service-detail-card">
+                    <h3>Business Licenses</h3>
+                    <p>Application for shop licenses, liquor licenses, and other operational permits.</p>
+                    <h4>Requirements:</h4>
+                    <ul class="req-list">
+                        <li>Premises Lease</li>
+                        <li>Health Inspection Report</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Apply</a>
+                    </div>
+                </div>
+
+                <!-- Service 12 -->
+                <div class="service-detail-card">
+                    <h3>Secretarial Services</h3>
+                    <p>General company secretarial duties including annual returns filing.</p>
+                    <h4>Includes:</h4>
+                    <ul class="req-list">
+                        <li>Annual Returns</li>
+                        <li>Share Transfers</li>
+                        <li>Change of Directors</li>
+                    </ul>
+                    <div class="service-action">
+                        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3>Tielemans.</h3>
+                    <img src="images\logo.png" alt="" class="logo_pic">
+                    <p style="opacity: 0.7; margin-bottom: 1rem;">Execellence in business consultancy.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Chiyedza House Kwame Nkrumah 1st Floor Office 24 Harare, Zimbabwe</li>
+                        <li><i class="fas fa-phone"></i> +263 777 754 471 | +263  717 178 442</li>
+                        <li><i class="fas fa-envelope"></i> info@tielemans.co.zw</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Tielemans Private Limited. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/263777754471" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-badge"></span>
+    </a>
+    <script src="script.js"></script>
+</body>
+
+</html>
