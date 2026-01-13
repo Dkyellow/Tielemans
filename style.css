@@ -192,6 +192,7 @@ img {
     backdrop-filter: blur(10px);
     padding: 1rem 0;
     box-shadow: var(--shadow-sm);
+    transition: var(--transition);
 }
 
 .nav-container {
