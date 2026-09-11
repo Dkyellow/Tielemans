@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tielemans.co.zw/sitemap.xml
