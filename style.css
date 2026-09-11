@@ -933,11 +933,12 @@ img {
 
     .hero {
         flex-direction: column;
-        padding-top: 100px;
+        padding-top: 80px;
         text-align: center;
         height: auto;
         min-height: 100vh;
         justify-content: center;
+        overflow: visible;
     }
 
     .hero-content {
@@ -951,8 +952,7 @@ img {
     }
 
     .hero-subtitle {
-        margin-left: auto;
-        margin-right: auto;
+        display: none;
     }
 
     .hero-cta {
