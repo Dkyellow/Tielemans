@@ -1,5 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Hide hero subtitle on mobile
+    if (window.innerWidth <= 768) {
+        const heroSubtitle = document.getElementById('hero-subtitle');
+        if (heroSubtitle) heroSubtitle.style.display = 'none';
+    }
+
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
