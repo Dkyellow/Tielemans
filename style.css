@@ -813,6 +813,12 @@ img {
     margin-bottom: 1.5rem;
 }
 
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
 .form-input {
     width: 100%;
     padding: 1rem;
@@ -979,6 +985,10 @@ img {
     .about-grid,
     .contact-container,
     .why-choose-us-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
         grid-template-columns: 1fr;
     }
 
