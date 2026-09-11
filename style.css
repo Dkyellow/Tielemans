@@ -348,7 +348,7 @@ img {
     position: relative;
     padding-top: 0;
     /* No padding needed as navbar is sticky now */
-    background-image: linear-gradient(rgba(10, 28, 61, 0.8), rgba(24, 137, 205, 0.6)), url('images/IMG-20250710-WA0063(1).jpg');
+    background-image: linear-gradient(rgba(10, 28, 61, 0.8), rgba(24, 137, 205, 0.6)), url('images/hero.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
