@@ -6,6 +6,70 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSubtitle) heroSubtitle.style.display = 'none';
     }
 
+    // Lead form submission
+    const leadForm = document.getElementById('lead-form');
+    if (leadForm) {
+        const statusBox = leadForm.querySelector('.form-status');
+
+        leadForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            if (!leadForm.checkValidity()) {
+                leadForm.reportValidity();
+                return;
+            }
+
+            const submitButton = leadForm.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+            const formData = new FormData(leadForm);
+            const payload = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                service: formData.get('service'),
+                message: formData.get('message'),
+                _captcha: 'false',
+                _subject: `New lead enquiry from ${formData.get('name')}`,
+                _template: 'table'
+            };
+
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            statusBox.textContent = '';
+
+            try {
+                const response = await fetch('https://formsubmit.co/ajax/info@tielemans.co.zw', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error('Request failed');
+                }
+
+                leadForm.reset();
+                statusBox.textContent = 'Thank you. Your message has been sent successfully, and we will get back to you soon.';
+                statusBox.style.color = '#1b7a3c';
+            } catch (error) {
+                const subject = encodeURIComponent(`New business enquiry: ${payload.service || 'General enquiry'}`);
+                const body = encodeURIComponent(
+                    `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone}\nService: ${payload.service || 'Not specified'}\n\nMessage:\n${payload.message}`
+                );
+                window.location.href = `mailto:info@tielemans.co.zw?subject=${subject}&body=${body}`;
+                statusBox.textContent = 'Your email app is opening so you can send the enquiry directly. We will respond as soon as possible.';
+                statusBox.style.color = '#1a4594';
+                leadForm.reset();
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
+            }
+        });
+    }
+
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
