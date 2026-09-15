@@ -6,70 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroSubtitle) heroSubtitle.style.display = 'none';
     }
 
-    // Lead form submission
-    const leadForm = document.getElementById('lead-form');
-    if (leadForm) {
-        const statusBox = leadForm.querySelector('.form-status');
-
-        leadForm.addEventListener('submit', async (event) => {
-            event.preventDefault();
-
-            if (!leadForm.checkValidity()) {
-                leadForm.reportValidity();
-                return;
-            }
-
-            const submitButton = leadForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-            const formData = new FormData(leadForm);
-            const payload = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                phone: formData.get('phone'),
-                service: formData.get('service'),
-                message: formData.get('message'),
-                _captcha: 'false',
-                _subject: `New lead enquiry from ${formData.get('name')}`,
-                _template: 'table'
-            };
-
-            submitButton.disabled = true;
-            submitButton.textContent = 'Sending...';
-            statusBox.textContent = '';
-
-            try {
-                const response = await fetch('https://formsubmit.co/ajax/info@tielemans.co.zw', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (!response.ok) {
-                    throw new Error('Request failed');
-                }
-
-                leadForm.reset();
-                statusBox.textContent = 'Thank you. Your message has been sent successfully, and we will get back to you soon.';
-                statusBox.style.color = '#1b7a3c';
-            } catch (error) {
-                const subject = encodeURIComponent(`New business enquiry: ${payload.service || 'General enquiry'}`);
-                const body = encodeURIComponent(
-                    `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone}\nService: ${payload.service || 'Not specified'}\n\nMessage:\n${payload.message}`
-                );
-                window.location.href = `mailto:info@tielemans.co.zw?subject=${subject}&body=${body}`;
-                statusBox.textContent = 'Your email app is opening so you can send the enquiry directly. We will respond as soon as possible.';
-                statusBox.style.color = '#1a4594';
-                leadForm.reset();
-            } finally {
-                submitButton.disabled = false;
-                submitButton.textContent = originalText;
-            }
-        });
-    }
-
     // Mobile Menu Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -180,30 +116,77 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Form Submission (Mock)
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
+    // Form Submission / Lead capture workflow
+    const leadForm = document.getElementById('lead-form');
+    const formStatus = document.getElementById('formStatus');
 
-            btn.innerText = 'Sending...';
+    if (leadForm) {
+        leadForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+
+            const formData = new FormData(leadForm);
+            const fullName = String(formData.get('fullName') || '').trim();
+            const email = String(formData.get('emailAddress') || '').trim();
+            const phone = String(formData.get('phoneNumber') || '').trim();
+            const service = String(formData.get('serviceInterest') || '').trim();
+            const message = String(formData.get('message') || '').trim();
+
+            if (!fullName || !email || !phone || !service || !message) {
+                if (formStatus) {
+                    formStatus.textContent = 'Please complete all the required fields before submitting your enquiry.';
+                    formStatus.classList.add('error');
+                    formStatus.classList.remove('success');
+                }
+                return;
+            }
+
+            const lead = {
+                fullName,
+                email,
+                phone,
+                service,
+                message,
+                source: window.location.pathname,
+                createdAt: new Date().toISOString()
+            };
+
+            try {
+                const existingLeads = JSON.parse(localStorage.getItem('tielemans-leads') || '[]');
+                existingLeads.unshift(lead);
+                localStorage.setItem('tielemans-leads', JSON.stringify(existingLeads));
+            } catch (error) {
+                console.warn('Could not store local lead data:', error);
+            }
+
+            const subject = encodeURIComponent(`New enquiry: ${service}`);
+            const body = encodeURIComponent(
+                `Full Name: ${fullName}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${phone}\n` +
+                `Service: ${service}\n\n` +
+                `Message:\n${message}`
+            );
+
+            const btn = leadForm.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
             btn.disabled = true;
+            btn.innerText = 'Preparing email...';
+
+            if (formStatus) {
+                formStatus.textContent = 'Your enquiry is ready. Your email app should open with the message prepared for Tielemans.';
+                formStatus.classList.remove('error');
+                formStatus.classList.add('success');
+            }
+
+            window.location.href = `mailto:info@tielemans.co.zw?subject=${subject}&body=${body}`;
 
             setTimeout(() => {
-                btn.innerText = 'Sent Successfully!';
-                btn.style.backgroundColor = '#28a745';
-
-                setTimeout(() => {
-                    form.reset();
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                    btn.style.backgroundColor = '';
-                }, 3000);
-            }, 1500);
+                leadForm.reset();
+                btn.disabled = false;
+                btn.innerText = originalText;
+            }, 2200);
         });
-    });
+    }
 
     // Carousel (Simple Horizontal Scroll)
     const track = document.querySelector('.services-track');
